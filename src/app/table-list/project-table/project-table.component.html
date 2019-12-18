@@ -1,0 +1,37 @@
+<table class="table">
+  <thead class=" text-primary">
+    <th>
+     Cliet's Name
+    </th>
+    <th>
+      Client's Last Name
+    </th>
+    <th>
+      Project name
+    </th>
+    <th class="text-right">
+        Action
+      </th>
+  </thead>
+  <tbody>
+  <!--looping through all of our projects-->
+     <tr *ngFor="let value of arraytest | paginate: {id :'pagination1', itemsPerPage: 5, currentPage: p } ">
+      <td>
+        {{value.ClientsFirstname}}
+      </td>
+      <td>
+       {{value.ClientsLastname}}
+      </td>
+      <td>
+          {{value.Projectname}}
+      </td>
+     <!--- <syntax for link with variable passing>
+          a [routerLink]="['/music-project',value.id]
+      -->
+      <!--<td><a id="project_link"  routerLink='/music-project'  >ENTER </a></td>-->
+      <td><a id="project_link"  [routerLink]="['/music-project',value.id]" >ENTER </a></td>
+    </tr>
+  
+  </tbody>
+</table>
+<pagination-controls   id="pagination1" style=" background: #e82121;" (pageChange)="p = $event"></pagination-controls>
